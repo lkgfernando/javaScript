@@ -22,3 +22,15 @@ console.log("Fernando " + "Rodrigues");
 
 console.log(`A som de 2 + 2 é ${2 + 2}`);
 
+console.log(20 > 10);
+console.log(20 < 10);
+console.log(20 >= 10);
+console.log(20 <= 10);
+console.log(20 == 10);
+console.log(20 === 10);
+console.log(20 != 10);
+console.log(20 !== 10);
+
+console.log(5 >= 5 && 4 < 8);
+console.log(5 >= 5 || 4 < 8);
+console.log(!5 >= 5 && 4 < 8);
