@@ -2,7 +2,7 @@
 Estudo JavaScript
 
 
-salário: 3000
+# salário: 3000
 aluguel: 1000
 conta de luz: 200
 conta de água: 100
