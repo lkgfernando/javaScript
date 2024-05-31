@@ -1,2 +1,0 @@
-# javaScript
-Estudo JavaScript
