@@ -10,6 +10,21 @@
 <body>
   <script>
 
+    function proporcional(lancamento) {
+      receita = 0
+      porcentagem = 0
+
+      for (lancamento of lancamento) {
+        if (lancamento.tipo === "receita") {
+          receita += lancamento.valor
+        }
+        if (lancamento.tipo === "despesa") {
+          porcentagem = Math.round((lancamento.valor / receita) * 100)
+          console.log(`${lancamento.categoria} -> ${porcentagem} %`)
+        }
+      }
+    }
+
     function arrendondar(value) {
       return Math.round(value * 100) / 100
     }
@@ -24,76 +39,104 @@
       return redimento
     }
 
-    function calcularSaldo(saldoInicial, salario, emprestimo, agua, energia, internet, iptu, planodeSaude, cartaoCredito, bale, saoCaetano) {
-      saldo = saldoInicial + salario - emprestimo - agua - energia - internet - iptu - planodeSaude - cartaoCredito - bale - saoCaetano
+    function calcularSaldo(mes, saldoInicial, lancamentos) {
+      saldo = saldoInicial
+      for (lancamentos of lancamentos) {
+        if (lancamentos.tipo === "receita") {
+          saldo += lancamentos.valor
+        }
+        if (lancamentos.tipo === "despesa") {
+          saldo -= lancamentos.valor
+        }
+      }
       estaNegativo1 = saldo < 0
-
+      console.log(mes);
       if (estaNegativo1) {
         juros = calcularJuros(saldo)
-        console.log("Mês de Janeiro você ficou no negativo reoganize suas contas:");
         saldo = arrendondar(saldo + juros)
-        console.log(`Juros mês de Janeiro:  ${juros}`)
-        console.log(`Saldo acumulado Janeiro:  ${saldo}`)
+        console.log(`Juros mês ${mes}:  ${juros}`)
+        console.log(`Saldo acumulado ${mes}:  ${saldo}`)
       } else {
         rendimento = calcularRendimento(saldo)
         saldo = arrendondar(saldo + rendimento)
-        console.log("Mês de Janeiro você ficou com saldo positivo, parabéns continue assim já dar para pensar em ivestir seu dinheiro!")
-        console.log(`Rendimentos mês de Janeiro:  ${rendimento}`)
-        console.log(`Saldo acumulado Janeiro: ${saldo}`)
+        console.log(`Rendimentos mês de ${mes}:  ${rendimento}`)
+        console.log(`Saldo acumulado ${mes}: ${saldo}`)
       }
       return arrendondar(saldo)
     }
 
     //----------------- Janeiro ------------------------------------
-    saldoInicial = 0
-    salario1 = 3600
-    emprestimo1 = 750
-    agua1 = 110
-    energia1 = 95
-    internet1 = 99
-    iptu1 = 35
-    planoDeSaude1 = 424
-    cartaoCredito1 = 1800
-    bale1 = 110
-    saoCaetano1 = 110
+    mes1 = "Janeiro"
+    saldoInicial1 = 0
+    lancamentoJaneiro = [
+      { categoria: "Sálario", tipo: "receita", valor: 3600 },
+      { categoria: "Aluguel", tipo: "despesa", valor: 750 },
+      { categoria: "Conta de Luz", tipo: "despesa", valor: 110 },
+      { categoria: "Conta de Agua", tipo: "despesa", valor: 95 },
+      { categoria: "Internet", tipo: "despesa", valor: 99 },
+      { categoria: "Transporte", tipo: "despesa", valor: 35 },
+      { categoria: "Lazer", tipo: "despesa", valor: 424 },
+      { categoria: "Alimentacao", tipo: "despesa", valor: 1800 },
+      { categoria: "Condominio", tipo: "despesa", valor: 110 },
+      { categoria: "Farmacia", tipo: "despesa", valor: 110 },
+      { categoria: "Cartao Crédito", tipo: "despesa", valor: 10 }]
 
-    console.log("JANEIRO");
-    saldo1 = calcularSaldo(saldoInicial, salario1, emprestimo1, agua1, energia1, internet1, iptu1, planoDeSaude1, cartaoCredito1, bale1, saoCaetano1)
+    saldo1 = calcularSaldo(mes1, saldoInicial1, lancamentoJaneiro)
+    // porcentagem = 0
+    // receita = 0
+    // if (lancamentoJaneiro.tipo === "receita") {
+    //   receita = lancamentoJaneiro.valor
+    //   console.log("Receita" + receita)
+    // }
+    // for (lancamentoJaneiro of lancamentoJaneiro) {
+    //   if (lancamentoJaneiro.tipo === "despesa") {
+    //     porcentagem = (receita / lancamentoJaneiro.valor) * 100
+    //   }
+    //   console.log(porcentagem)
+
+    // }
+
+
+    proporcional(lancamentoJaneiro)
     console.log("_______________________________________________________ ")
 
     //------------------------ FEVEREIRO ----------------------------------------------------
+    mes2 = "Fevereiro"
     saldoInicial2 = saldo1
-    salario2 = 3600
-    emprestimo2 = 754
-    agua2 = 110
-    energia2 = 93
-    internet2 = 99
-    iptu2 = 35
-    planoDeSaude2 = 424
-    cartaoCredito2 = 1500
-    bale2 = 110
-    saoCaetano2 = 110
+    lancamentoFevereiro = [
+      { categoria: "Sálario", tipo: "receita", valor: 3600 },
+      { categoria: "Aluguel", tipo: "despesa", valor: 754 },
+      { categoria: "Conta de Luz", tipo: "despesa", valor: 110 },
+      { categoria: "Conta de Agua", tipo: "despesa", valor: 93 },
+      { categoria: "Internet", tipo: "despesa", valor: 99 },
+      { categoria: "Transporte", tipo: "despesa", valor: 35 },
+      { categoria: "Lazer", tipo: "despesa", valor: 424 },
+      { categoria: "Alimentacao", tipo: "despesa", valor: 1500 },
+      { categoria: "Condominio", tipo: "despesa", valor: 110 },
+      { categoria: "Farmacia", tipo: "despesa", valor: 110 },
+      { categoria: "Cartao Crédito", tipo: "despesa", valor: 330 }]
 
-    console.log("FEVEREIRO");
-    saldo2 = calcularSaldo(saldoInicial2, salario2, emprestimo2, agua2, energia2, internet2, iptu2, planoDeSaude2, cartaoCredito2, bale2, saoCaetano2)
-
+    saldo2 = calcularSaldo(mes2, saldoInicial2, lancamentoFevereiro)
+    proporcional(lancamentoFevereiro)
     console.log("_______________________________________________________ ")
     //------------------------ MARÇO ----------------------------------------------------
+    mes3 = "Março"
     saldoInicial3 = saldo2
-    salario3 = 3600
-    emprestimo3 = 754
-    agua3 = 110
-    energia3 = 93
-    internet3 = 99
-    iptu3 = 35
-    planoDeSaude3 = 424
-    cartaoCredito3 = 1500
-    bale3 = 110
-    saoCaetano3 = 110
+    lancamentoMarco = [
+      { categoria: "Sálario", tipo: "receita", valor: 3600 },
+      { categoria: "Aluguel", tipo: "despesa", valor: 754 },
+      { categoria: "Conta de Luz", tipo: "despesa", valor: 110 },
+      { categoria: "Conta de Agua", tipo: "despesa", valor: 93 },
+      { categoria: "Internet", tipo: "despesa", valor: 99 },
+      { categoria: "Transporte", tipo: "despesa", valor: 35 },
+      { categoria: "Lazer", tipo: "despesa", valor: 424 },
+      { categoria: "Alimentacao", tipo: "despesa", valor: 1300 },
+      { categoria: "Condominio", tipo: "despesa", valor: 110 },
+      { categoria: "Farmacia", tipo: "despesa", valor: 110 },
+      { categoria: "Cartao Crédito", tipo: "despesa", valor: 1500 }]
+    saldo3 = calcularSaldo(mes3, saldoInicial3, lancamentoMarco)
 
-    console.log("MARÇO");
-    saldo3 = calcularSaldo(saldoInicial3, salario3, emprestimo3, agua3, energia3, internet3, iptu3, planoDeSaude3, cartaoCredito3, bale3, saoCaetano3)
-
+    proporcional(lancamentoMarco)
 
     console.log("_______________________________________________________ ")
     //ano
@@ -112,12 +155,3 @@
 </body>
 
 </html>
-
-salário: 3000
-aluguel: 1000
-conta de luz: 200
-conta de água: 100
-internet: 100
-transporte: 300
-lazer: 300
-alimentação: 500

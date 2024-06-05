@@ -72,4 +72,48 @@ nestedScope();
 console.log(`Escopo global: ${x}`);
 
 
+const separation = (value, n, category) => {
+  console.log(value.repeat(n));
+  console.log(category);
+  console.log(value.repeat(n));
+
+};
+
+separation("*", 65, "Arrow Function");
+//Arrow Function
+const testingArrow = () => {
+  console.log("Primeira arrou function");
+};
+
+testingArrow();
+
+let financeControl = [
+  { categoria: "Salário", valor: 3600 },
+  { categoria: "Cartão", valor: 1800 },
+  { categoria: "Financiamento", valor: 800 },
+]
+
+const controlFinance = (n) => {
+  let saldo = 0;
+  for (n of n) {
+    if (n.categoria == "Salário") {
+      saldo += n.valor;
+    }
+    if (n.categoria != "Salário") {
+      saldo -= n.valor;
+    }
+    console.log(`${n.categoria} : ${n.valor} `);
+  }
+  console.log(`Saldo do mês: ${saldo}`);
+};
+
+controlFinance(financeControl);
+
+
+
+
+
+
+
+
 
