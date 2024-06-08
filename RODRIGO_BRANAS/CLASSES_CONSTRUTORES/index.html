@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes / Construtores</title>
+</head>
+
+<body>
+  <script>
+    class Lancamento {
+
+      constructor(categoria, tipo, valor) {
+        if (tipo !== "Receita" && tipo !== "Despesa") {
+          throw new Error("Lançamento inválido: Tipo deve ser Receita ou Despesa")
+        }
+        if (valor <= 0) {
+          throw new Error("Lançamento inválido: Valor deve ser maior que Zero")
+        }
+        if (categoria === "") {
+          throw new Error("Lançamento inválido: Categoria não pode ser vazia!")
+        }
+        this.categoria = categoria
+        this.tipo = tipo
+        this.valor = valor
+      }
+
+    }
+
+    function arredondar(valor) {
+      return juros = Math.round(valor * 100) / 100
+    }
+
+    function calcularJuros(valor) {
+      juros = arredondar(valor * 0.1)
+      return juros
+    }
+
+    function calculaRendimentos(valor) {
+      rendimentos = arredondar(valor * 0.005)
+      return rendimentos
+    }
+
+    function distribuirDespesa(lancamentos, total) {
+      distribuicaoDeDespesa = []
+      for (lancamento of lancamentos) {
+        if (lancamento.tipo === "Despesa") {
+          percentual = arredondar((lancamento.valor / total) * 100)
+          distribuicaoDeDespesa.push({ categoria: lancamento.categoria, percentual })
+        }
+      }
+
+      return distribuicaoDeDespesa
+    }
+
+    function calculaSaldo(mes, saldoInicial, lancamentos) {
+      console.log(mes)
+      totalizadorDoMes = { saldo: 0, saldoInicial, juros: 0, rendimentos: 0, receitas: 0, despesas: 0, distribuicaoDeDespesa: [] }
+      totalizadorDoMes.saldo = saldoInicial
+      for (lancamento of lancamentos) {
+        if (lancamento.tipo === "Receita") {
+          totalizadorDoMes.saldo += lancamento.valor
+          totalizadorDoMes.receitas += lancamento.valor
+        }
+        if (lancamento.tipo === "Despesa") {
+          totalizadorDoMes.saldo -= lancamento.valor
+          totalizadorDoMes.despesas += lancamento.valor
+        }
+      }
+
+      totalizadorDoMes.distribuicaoDeDespesa = distribuirDespesa(lancamentos, totalizadorDoMes.despesas)
+      estaNegativao = totalizadorDoMes.saldo < 0
+      if (estaNegativao) {
+        totalizadorDoMes.juros = calcularJuros(totalizadorDoMes.saldo)
+        totalizadorDoMes.saldo = arredondar(totalizadorDoMes.saldo + totalizadorDoMes.juros)
+      } else {
+        totalizadorDoMes.rendimentos = calculaRendimentos(totalizadorDoMes.saldo)
+        totalizadorDoMes.saldo = arredondar(totalizadorDoMes.saldo + totalizadorDoMes.rendimentos)
+      }
+
+      //console.log(saldo)
+      return totalizadorDoMes
+    }
+
+    lancamentoJaneiro = [
+      new Lancamento("Sálario", "Receita", 3600),
+      new Lancamento("Aluguel", "Despesa", 754),
+      new Lancamento("Conta de Luz", "Despesa", 110),
+      new Lancamento("Conta de Agua", "Despesa", 93),
+      new Lancamento("Internet", "Despesa", 99),
+      new Lancamento("Transporte", "Despesa", 35),
+      new Lancamento("Lazer", "Despesa", 424),
+      new Lancamento("Alimentacao", "Despesa", 1500),
+      new Lancamento("Condominio", "Despesa", 110),
+      new Lancamento("Farmacia", "Despesa", 110),
+      new Lancamento("Cartao Crédito", "Despesa", 330)
+    ]
+    totalizadorDoMes1 = calculaSaldo("Janeiro", 0, lancamentoJaneiro)
+    console.log(totalizadorDoMes1)
+
+    lancamentoFevereiro = [
+      new Lancamento("Sálario", "Receita", 4500),
+      new Lancamento("Aluguel", "Despesa", 1000),
+      new Lancamento("Conta de Luz", "Despesa", 150),
+      new Lancamento("Conta de Agua", "Despesa", 153),
+      new Lancamento("Internet", "Despesa", 99),
+      new Lancamento("Transporte", "Despesa", 35),
+      new Lancamento("Lazer", "Despesa", 569),
+      new Lancamento("Alimentacao", "Despesa", 2000),
+      new Lancamento("Condominio", "Despesa", 110),
+      new Lancamento("Farmacia", "Despesa", 110),
+      new Lancamento("Cartao Crédito", "Despesa", 330)
+    ]
+
+    totalizadorDoMes2 = calculaSaldo("Fevereiro", totalizadorDoMes1.saldo, lancamentoFevereiro)
+    console.log(totalizadorDoMes2)
+
+    lancamentoMarco = [
+      new Lancamento("Sálario", "Receita", 4500),
+      new Lancamento("Aluguel", "Despesa", 800),
+      new Lancamento("Conta de Luz", "Despesa", 150),
+      new Lancamento("Conta de Agua", "Despesa", 153),
+      new Lancamento("Internet", "Despesa", 99),
+      new Lancamento("Transporte", "Despesa", 35),
+      new Lancamento("Lazer", "Despesa", 569),
+      new Lancamento("Alimentacao", "Despesa", 1500),
+      new Lancamento("Condominio", "Despesa", 110),
+      new Lancamento("Farmacia", "Despesa", 110),
+      new Lancamento("Cartao Crédito", "Despesa", 330)
+    ]
+
+    totalizadordoMes3 = calculaSaldo("Março", totalizadorDoMes2.saldo, lancamentoMarco)
+    console.log(totalizadordoMes3)
+
+  </script>
+
+</body>
+
+</html>
