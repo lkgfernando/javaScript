@@ -23,17 +23,22 @@ function arrendondar(valor) {
   return Math.round(valor * 100) / 100
 }
 
-function jurosSimples(valor) {
+
+
+function jurosSimples(value) {
   let acumulado;
-  for (valor of valor) {
-    acumulado = valor.montante * (1 + valor.juros * valor.tempo);
+  for (valor of value) {
+
+    acumulado = valor.montante * (1 + valor.taxa * valor.tempo);
+
+
   }
   return acumulado;
 }
 
 const simulador = [
-  { tempo: 12, juros: 0.10, montante: 1000 },
-  { tempo: 5, juros: 0.05, montante: 10000 }
+  { tempo: 12, taxa: 0.10, montante: 1000 },
+  { tempo: 5, taxa: 0.05, montante: 10000 }
 ]
 
 console.log(jurosSimples(simulador));
