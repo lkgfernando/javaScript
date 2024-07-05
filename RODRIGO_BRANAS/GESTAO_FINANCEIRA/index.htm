@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Financeira Pessoal</title>
+</head>
+
+<body>
+  <script>
+    function arredondar(valor) {
+      return Math.round(valor * 100) / 100
+    }
+
+    function calcularJuros(valor) {
+      const juros = arredondar(valor * 0.1);
+      return juros;
+    }
+
+    function calcularRedimentos(valor) {
+      const rendiemnto = arredondar(valor * 0.05);
+      return rendiemnto;
+    }
+
+    function calcularSaldo(mes, saldoInicial, salario, agua, luz, iptu, internet, celular, gas, emprestimo, servicoProdutosLimpeza, reformaConstrucao, equipamentosCasa, outrasDespesas, das, escritorioContabil, racaoPet, taxaCartao, assinaturas, mercado, padaria, restauranteBar, presente, investimentoCaixa, planoDeSaude,
+      planoOdontologico, adicionaisPlanoSaude, farmacia, roupasCalcados, salaoBeleza, combustivel, manutencaoCarro, ipva, seguroCarro, pedagio, estacionamento, materialEscolar, cursos, lazer, bale, futebol, viagens, filmagens
+    ) {
+      console.log(mes);
+      let saldo = saldoInicial + salario - agua - luz - iptu - internet - celular - gas - emprestimo - servicoProdutosLimpeza - reformaConstrucao - equipamentosCasa - outrasDespesas - das - escritorioContabil - racaoPet - taxaCartao - assinaturas - mercado - padaria - restauranteBar - presente - investimentoCaixa - planoDeSaude -
+        planoOdontologico - adicionaisPlanoSaude - farmacia - roupasCalcados - salaoBeleza - combustivel - manutencaoCarro - ipva - seguroCarro - pedagio - estacionamento - materialEscolar - cursos - lazer - bale - futebol - viagens - filmagens;
+      estaNegativo = saldo < 0;
+      if (estaNegativo) {
+        let juros = calcularJuros(saldo);
+        console.log(juros);
+        saldo = arredondar(saldo += juros);
+      } else {
+        let rendimentos = calcularRedimentos(saldo);
+        console.log(rendimentos);
+        saldo = arredondar(saldo += rendimentos);
+      }
+      return saldo;
+    }
+
+    let mes1 = "Junho";
+    let saldoInicial1 = 0;
+    let salario1 = 1860.88;
+    let agua1 = 0;
+    let luz1 = 0;
+    let iptu1 = 0;
+    let internet1 = 0;
+    let celular1 = 0;
+    let gas1 = 0;
+    let emprestimo1 = 200;
+    let servicoProdutosLimpeza1 = 0;
+    let reformaConstrucao1 = 0;
+    let equipamentosCasa1 = 70;
+    let outrasDespesas1 = 20;
+    let das1 = 0;
+    let escritorioContabil1 = 0;
+    let racaoPet1 = 0;
+    let taxaCartao1 = 0;
+    let assinaturas1 = 0;
+    let mercado1 = 158.30;
+    let padaria1 = 20.75;
+    let restauranteBar1 = 142.70;
+    let presente1 = 0;
+    let investimentoCaixa1 = 0;
+    let planoDeSaude1 = 0;
+    let planoOdontologico1 = 0;
+    let adicionaisPlanoSaude1 = 0;
+    let farmacia1 = 0;
+    let roupasCalcados1 = 0;
+    let salaoBeleza1 = 0;
+    let combustivel1 = 0;
+    let manutencaoCarro1 = 0;
+    let ipva1 = 0;
+    let seguroCarro1 = 0;
+    let pedagio1 = 0;
+    let estacionamento1 = 0;
+    let materialEscolar1 = 0;
+    let cursos1 = 0;
+    let lazer1 = 0;
+    let bale1 = 0;
+    let futebol1 = 0;
+    let viagens1 = 0;
+    let filmagens1 = 0;
+    const saldoJunho = calcularSaldo(mes1, saldoInicial1, salario1, agua1, luz1, iptu1, internet1, celular1, gas1, emprestimo1, servicoProdutosLimpeza1, reformaConstrucao1, equipamentosCasa1, outrasDespesas1
+      , das1, escritorioContabil1, racaoPet1, taxaCartao1, assinaturas1, mercado1, padaria1, restauranteBar1, presente1, investimentoCaixa1, planoDeSaude1, planoOdontologico1, adicionaisPlanoSaude1, farmacia1, roupasCalcados1, salaoBeleza1,
+      combustivel1, manutencaoCarro1, ipva1, seguroCarro1, pedagio1, estacionamento1, materialEscolar1, cursos1, lazer1, bale1, futebol1, viagens1, filmagens1
+    );
+
+    console.log(saldoJunho);
+
+    //Julho
+    salario2 = 10400;
+    agua2 = 95;
+    luz2 = 103;
+    iptu2 = 35.59;
+    internet2 = 99;
+    celular2 = 129.80;
+    emprestimo2 = 1402.80;
+    equipamentosCasa2 = 53.98;
+    outrasDespesas2 = 161.42;
+    assinaturas2 = 52.99;
+    mercado2 = 717.87;
+    padaria2 = 124.84;
+    restauranteBar2 = 163.39;
+    planoDeSaude2 = 425.16;
+    farmacia2 = 124.48;
+    roupasCalcados2 = 462.05;
+    salaoBeleza2 = 74.45;
+    combustivel2 = 150;
+    manutencaoCarro2 = 524.07;
+    seguroCarro2 = 171.21;
+    cursos2 = 124.81;
+    lazer2 = 226.55;
+    bale2 = 170;
+    futebol2 = 372.44;
+
+    saldoJulho = (salario2 - agua2 - luz2 - iptu2 - internet2 - celular2 - emprestimo2 - equipamentosCasa2 - outrasDespesas2 - assinaturas2 - mercado2 - padaria2 - restauranteBar2 - planoDeSaude2 - farmacia2
+      - roupasCalcados2 - salaoBeleza2 - combustivel2 - manutencaoCarro2 - seguroCarro2 - cursos2 - lazer2 - bale2 - futebol2
+    );
+
+    console.log("Julho");
+    console.log(saldoJulho);
+    estaNegativo2 = saldoJulho < 0;
+    if (estaNegativo2) {
+      juros2 = saldoJulho * 0.10;
+      console.log("Juros de Julho");
+      console.log(juros2);
+      saldoJulho = saldoJulho + juros2;
+    } else {
+      rendimentos2 = calcularRedimentos(saldoJulho);
+      console.log("Rendimentos de Julho");
+      console.log(rendimentos2);
+      saldoJulho += rendimentos2;
+    }
+
+    // acumuladoAno = saldoJunho + saldoJulho
+    // console.log("Ano");
+    // console.log(acumuladoAno);
+
+  </script>
+</body>
+
+</html>
